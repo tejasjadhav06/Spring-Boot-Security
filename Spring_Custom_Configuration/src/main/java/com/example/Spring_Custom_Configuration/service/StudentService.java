@@ -26,8 +26,11 @@ public class StudentService {
 		repo.save(student);
 	}
 
-	public Student updateStudent(Student student) {
-		repo.save(student);
+	public Student updateStudent(int id, Student student) {
+		Student s = getStudentById(id);
+		s.setName(student.getName());
+		s.setMarks(student.getMarks());
+		repo.save(s);
 		return student;
 	}
 	
