@@ -16,13 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Bcrypt_Password_Encoder.model.Student;
 import com.example.Bcrypt_Password_Encoder.model.Users;
-import com.example.Bcrypt_Password_Encoder.service.UserService;
 
 @RestController
 public class UserController {
-	
-	@Autowired
-	private UserService service;
 	
 	List<Student> students = new ArrayList(Arrays.asList(new Student(101,"Rakesh",89),new Student(102,"Rahul",85)));
 	
@@ -62,10 +58,4 @@ public class UserController {
 		int index = students.indexOf(s);
 		students.remove(index);
 	}
-	
-	@GetMapping("/register")
-	public Users register(@RequestBody Users user) {
-		return service.register(user);
-	}
-	
 }
