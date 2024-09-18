@@ -8,4 +8,6 @@ import com.example.Verify_User.model.Users;
 @Repository
 public interface UserRepo extends JpaRepository<Users, Integer>{
 
+	Users findByUsername(String username);
+
 }
