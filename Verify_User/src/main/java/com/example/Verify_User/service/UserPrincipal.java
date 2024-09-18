@@ -9,13 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.example.Verify_User.model.Users;
 
-@Service
 public class UserPrincipal implements UserDetails {
 
 	@Autowired 
 	private Users user;
 	
-	UserPrincipal(Users user){
+	public UserPrincipal(Users user){
 		this.user = user;
 	}
 	@Override
