@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.JWT_Token.model.Student;
+import com.example.JWT_Token.model.Users;
+import com.example.JWT_Token.service.UserService;
 
 @RestController
 public class UserController {
+	
+	@Autowired
+	private UserService service;
 	
 	List<Student> students = new ArrayList(Arrays.asList(new Student(101,"Rakesh",89),new Student(102,"Rahul",85)));
 	
@@ -57,4 +63,8 @@ public class UserController {
 		students.remove(index);
 	}
 	
+	@PostMapping("/register")
+	public Users register(@RequestBody Users user) {
+		return service.register(user);
+	}
 }
